@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwhyqpmwuvr2o"]
+
+[ext_resource type="PackedScene" uid="uid://c8ynxvt3h2xy3" path="res://scenes/player.tscn" id="1_sjb42"]
+[ext_resource type="PackedScene" uid="uid://b4kkviqqchpqa" path="res://scenes/exit.tscn" id="3_b3oru"]
+[ext_resource type="PackedScene" uid="uid://begd6324xat2u" path="res://scenes/wall.tscn" id="3_ua5ty"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3oru"]
+size = Vector2(1152, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ua5ty"]
+size = Vector2(250, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61w3m"]
+size = Vector2(300, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdpul"]
+size = Vector2(1152, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hd6v"]
+size = Vector2(32, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_045es"]
+size = Vector2(32, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omn1t"]
+size = Vector2(32, 250)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf3p4"]
+size = Vector2(32, 648)
+
+[node name="Level1" type="Node2D"]
+
+[node name="Background" type="Polygon2D" parent="."]
+position = Vector2(-20, 0)
+color = Color(0.745098, 0.745098, 0.745098, 1)
+polygon = PackedVector2Array(-4, -2, -4, 678, 1206, 678, 1206, -41, -4, -43)
+
+[node name="Player" parent="." instance=ExtResource("1_sjb42")]
+position = Vector2(80, 80)
+
+[node name="Wall" parent="." instance=ExtResource("3_ua5ty")]
+
+[node name="CollisionShape2D" parent="Wall" index="0"]
+position = Vector2(576, 16)
+shape = SubResource("RectangleShape2D_b3oru")
+
+[node name="Wall7" parent="." instance=ExtResource("3_ua5ty")]
+
+[node name="CollisionShape2D" parent="Wall7" index="0"]
+position = Vector2(850, 180)
+shape = SubResource("RectangleShape2D_ua5ty")
+
+[node name="Wall5" parent="." instance=ExtResource("3_ua5ty")]
+
+[node name="CollisionShape2D" parent="Wall5" index="0"]
+position = Vector2(250, 150)
+shape = SubResource("RectangleShape2D_61w3m")
+
+[node name="Wall4" parent="." instance=ExtResource("3_ua5ty")]
+
+[node name="CollisionShape2D" parent="Wall4" index="0"]
+position = Vector2(576, 632)
+shape = SubResource("RectangleShape2D_pdpul")
+
+[node name="Wall2" parent="." instance=ExtResource("3_ua5ty")]
+
+[node name="CollisionShape2D" parent="Wall2" index="0"]
+position = Vector2(16, 324)
+shape = SubResource("RectangleShape2D_8hd6v")
+
+[node name="Wall8" parent="." instance=ExtResource("3_ua5ty")]
+
+[node name="CollisionShape2D" parent="Wall8" index="0"]
+position = Vector2(594, 340)
+shape = SubResource("RectangleShape2D_045es")
+
+[node name="Wall6" parent="." instance=ExtResource("3_ua5ty")]
+
+[node name="CollisionShape2D" parent="Wall6" index="0"]
+position = Vector2(331, 416)
+shape = SubResource("RectangleShape2D_omn1t")
+
+[node name="Wall3" parent="." instance=ExtResource("3_ua5ty")]
+
+[node name="CollisionShape2D" parent="Wall3" index="0"]
+position = Vector2(1136, 324)
+shape = SubResource("RectangleShape2D_lf3p4")
+
+[node name="Exit" parent="." instance=ExtResource("3_b3oru")]
+position = Vector2(1095, 594)
+next_level = "res://levels/level2.tscn"
+
+[connection signal="body_entered" from="Exit" to="Player" method="_on_exit_body_entered"]
+
+[editable path="Wall"]
+[editable path="Wall7"]
+[editable path="Wall5"]
+[editable path="Wall4"]
+[editable path="Wall2"]
+[editable path="Wall8"]
+[editable path="Wall6"]
+[editable path="Wall3"]
